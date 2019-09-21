@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_lstpushback.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppepperm <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/12 13:56:36 by ppepperm          #+#    #+#             */
-/*   Updated: 2019/09/15 15:37:08 by ppepperm         ###   ########.fr       */
+/*   Created: 2019/09/13 18:16:27 by ppepperm          #+#    #+#             */
+/*   Updated: 2019/09/15 16:08:14 by ppepperm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 32
-# include "libft.h"
+#include "libft.h"
 
-int get_next_line(const int fd, char **line);
+void	ft_lstpushback(t_list **head, t_list *node)
+{
+	t_list *save;
 
-#endif
+	if (!*head)
+		*head = node;
+	else
+	{
+		save = *head;
+		while (save->next)
+			save = save->next;
+		save->next = node;
+	}
+}
